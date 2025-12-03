@@ -1,5 +1,5 @@
 # mogitate  
-##環境構築
+##環境構築  
 ##Dockerビルド  
 ・git clone git@github.com:haruki-saitou/mogitate.git  
 ・docker compose up -d --build  
