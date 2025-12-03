@@ -10,6 +10,7 @@
 ・php artisan key:generate  
 ・php artisan migrate  
 ・php artisan db:seed  
+・php artisan storage:link  
 ## 開発環境  
 ・商品一覧画面  
 ・商品詳細画面  
