@@ -1,5 +1,5 @@
 # mogitate  
-##環境構築  
+#環境構築  
 ##Dockerビルド  
 ・git clone git@github.com:haruki-saitou/mogitate.git  
 ・docker compose up -d --build  
@@ -10,11 +10,11 @@
 ・php artisan key:generate  
 ・php artisan migrate  
 ・php artisan db:seed  
-##開発環境  
+#開発環境  
 ・商品一覧画面  
 ・商品詳細画面  
 ・商品登録画面  
-##使用技術(実行環境)  
+#使用技術(実行環境)  
 ・Laravel 8.83.29  
 ・PHP 8.1.33  
 ・nginx 1.21.1  
