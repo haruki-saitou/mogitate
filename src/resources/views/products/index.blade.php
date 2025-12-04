@@ -20,7 +20,7 @@
                         <span style="background-color: #eee; padding: 2px 5px;">{{ $season->name }}</span>
                     @endforeach
                 </p>
-                <a href="{{ route('products.show', ['product' => $product->id]) }}">詳細を見る</a>
+                <a href="{{ route('products.show', ['product_id' => $product->id]) }}">詳細を見る</a>
             </div>
         @endforeach
     </div>
