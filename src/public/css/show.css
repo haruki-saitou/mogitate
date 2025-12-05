@@ -237,9 +237,10 @@ input[type="number"] {
 }
 
 .detail__actions-delete .delete-button{
+    display: inline-block;
     position: absolute;
-    right: 40px;
-    top: calc(100% - 40px);
+    right: 480px;
+    top: calc(100% - 100px);
 }
 
 .action-button {

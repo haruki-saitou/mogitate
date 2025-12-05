@@ -94,7 +94,9 @@ class ProductController extends Controller
         $products = $query->paginate(6);
         $products->appends($request->query());
 
-        return view('products.index', compact('products', 'keyword', 'sort'));
+        $is_empty = $products->isEmpty();
+
+        return view('products.index', compact('products', 'keyword', 'sort', 'is_empty'));
     }
 
     public function destroy(Product $product_id) {

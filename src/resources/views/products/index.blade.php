@@ -6,8 +6,13 @@
 
 @section('content')
     @if (session('success'))
-        <div class="todo__alert--success">
+        <div class="products__alert--success">
             {{ session('success') }}
+        </div>
+    @endif
+    @if ($is_empty ?? false)
+        <div class="products__alert--danger" role="alert">
+            「{{ $keyword }}」に一致する商品が見つかりませんでした。
         </div>
     @endif
     <div class="products-header">

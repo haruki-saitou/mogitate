@@ -6,7 +6,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-.todo__alert--success {
+.products__alert--success {
     padding: 10px 30px;
     align-items: center;
     height: 50px;
@@ -17,6 +17,19 @@ h2 {
     font-weight: bold;
     margin: 0;
     color: #227e53;
+}
+
+.products__alert--danger {
+    padding: 10px 30px;
+    align-items: center;
+    height: 50px;
+    border-color: #f5c6cb;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #721c24;
 }
 
 .products-header {

@@ -73,16 +73,16 @@
                 <label for="description">商品説明</label>
                 <textarea name="description" id="description" cols="30" rows="10">{{ old('description', $product_id->description) }}</textarea>
             </div>
-            <div class="detail__buttons">
-                <div class="detail__actions">
-                    <div class="detail__actions-back">
-                        <button type="button" class="action-button back-button" onclick="history.back()">戻る</button>
-                    </div>
-                    <div class="detail__actions-save">
-                        <button type="submit" class="action-button save-button">変更を保存</button>
-                    </div>
+
+            <div class="detail__actions">
+                <div class="detail__actions-back">
+                    <button type="button" class="action-button back-button" onclick="history.back()">戻る</button>
+                </div>
+                <div class="detail__actions-save">
+                    <button type="submit" class="action-button save-button">変更を保存</button>
                 </div>
             </div>
+        </div>
     </form>
     <div class="detail__actions-delete">
         <form action="{{ route('products.destroy', ['product_id' => $product_id->id]) }}" method="POST"
@@ -93,6 +93,5 @@
                 <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
-    </div>
     </div>
 @endsection
