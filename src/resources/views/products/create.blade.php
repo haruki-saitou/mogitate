@@ -1,114 +1,127 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>商品登録</title>
-</head>
-<style>
-    /* style.css または <style> タグ内に記述 */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}" />
+@endsection
 
-input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield; /* 標準的な書き方 (将来的な互換性のため) */
-}
-</style>
-<body>
-    <h1>商品登録 (PG03)</h1>
-
-    <a href="{{ route('products.index') }}">← 一覧に戻る</a>
-
-    {{-- resources/views/products/create.blade.php (修正版) --}}
-
-    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" novalidate>
-    @csrf
-
-    {{-- ★ 1. 商品名 ★ --}}
-    <div style="margin-bottom: 15px;">
-        <label for="name">商品名:</label> <span style="color: red;">必須</span>
-        <input type="text" name="name" id="name" value="{{ old('name') }}">
-    </div>
-    @if ($errors->has('name'))
-        <div style="color: red; font-size: 0.9em; margin-top: 5px;">
-            @foreach($errors->get('name') as $message)
-                <div>{{ $message }}</div>
-            @endforeach
-        </div>
-    @endif
-
-    {{-- ★ 2. 価格 ★ --}}
-    <div style="margin-bottom: 15px;">
-        <label for="price">価格:</label> <span style="color: red;">必須</span>
-        <input type="number" name="price" id="price" value="{{ old('price') }}">
-        <div style="font-size: 0.9em; color: gray;">0-10000円以内で入力してください</div>
-    </div>
-    @if ($errors->has('price'))
-        <ul style="color: red; font-size: 0.9em; margin-top: 5px;">
-            @foreach($errors->get('price') as $message)
-                <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-    {{-- ★ 3. 商品画像 ★ --}}
-    <div style="margin-bottom: 15px;">
-        <label>商品画像</label> <span style="color: red;">必須</span>
-        <div>
-            <input type="file" name="image_file" id="image_file">
-            <div style="font-size: 0.9em; color: gray;">
-                「.png」または「.jpeg」形式でアップロードしてください
-            </div>
-            @if ($errors->has('image_file'))
-                <div style="color: red; font-size: 0.9em; margin-top: 5px;">
-                    @foreach($errors->get('image_file') as $message)
-                        <div>{{ $message }}</div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </div>
-
-    {{-- ★ 4. 季節 ★ --}}
-    <div style="margin-bottom: 15px;">
-        <label>季節</label> <span style="color: red;">必須 複数選択可</span><br>
-
-        @if ($errors->has('seasons'))
-            <div style="color: red; font-size: 0.9em; margin-top: 5px;">
-                @foreach($errors->get('seasons') as $message)
-                    <div>{{ $message }}</div>
+@section('content')
+    {{-- エラーメッセージの表示 (必要に応じて) --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
                 @endforeach
-            </div>
-        @endif
-        @foreach ($seasons as $season)
-            <label style="margin-right: 15px;">
-                <input type="checkbox" name="seasons[]" value="{{ $season->id }}"
-                    {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
-                {{ $season->name }}
-            </label>
-        @endforeach
-    </div>
-
-    {{-- ★ 5. 商品説明 ★ --}}
-    <div style="margin-bottom: 15px;">
-        <label for="description">商品説明</label> <span style="color: red;">必須</span>
-        <textarea name="description" id="description" rows="4">{{ old('description') }}</textarea>
-        <div style="font-size: 0.9em; color: gray;">120文字以内で入力してください</div>
-    </div>
-    @if ($errors->has('description'))
-        <div style="color: red; font-size: 0.9em; margin-top: 5px;">
-            @foreach ($errors->get('description') as $message)
-                <div>{{ $message }}</div>
-            @endforeach
+            </ul>
         </div>
     @endif
 
+    {{-- ★ フォームの送信先を store ルートに変更し、POSTメソッドを使用 ★ --}}
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
 
-    <div>
-        <button type="submit">登録</button>
-    </div>
-</form>
+        <div class="detail-container">
+            <div class="detail-header">
+                <a href="{{ route('products.index') }}" class="detail__link">商品一覧 > </a>
+                <span>商品登録</span>
+            </div>
+
+            <div class="detail-content">
+                {{-- ★ 商品画像セクション（プレビュー機能はJavaScriptで実装する必要あり）★ --}}
+                <div class="detail__image-section">
+                    <div class="detail__image">
+                        {{-- 初期状態ではno-imageを表示 --}}
+                        <img src="{{ asset('images/no-image.png') }}" id="image-preview" class="image" />
+                    </div>
+
+                    <div class="file-upload-container">
+                        <input type="file" name="image_file" id="image_file" class="hidden-file-input">
+                        <label for="image_file" class="custom-file-label">
+                            ファイルを選択
+                        </label>
+                        {{-- ファイル名表示も初期は「選択されていません」 --}}
+                        <span id="file-name" class="file-name-display">
+                            選択されていません
+                        </span>
+                    </div>
+                </div>
+
+                <div class="detail__form">
+                    {{-- ★ 商品名 ★ --}}
+                    <div class="detail__form-label">
+                        <label for="name">商品名</label>
+                        <input type="text" name="name" id="name" value="{{ old('name') }}" />
+                    </div>
+                    {{-- ★ 価格 ★ --}}
+                    <div class="detail__form-price">
+                        <label for="price">価格</label>
+                        <input type="number" name="price" id="price" value="{{ old('price') }}" />
+                    </div>
+
+                    {{-- ★ 季節（チェックボックス）★ --}}
+                    <div class="detail__form-season">
+                        <label>季節</label>
+                        <div class="checkbox-group">
+                            @foreach ($seasons as $season)
+                                <span class="checkbox-item">
+                                    <input type="checkbox" name="seasons[]" id="season-{{ $season->id }}"
+                                        value="{{ $season->id }}"
+                                        {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
+                                    <label for="season-{{ $season->id }}">{{ $season->name }}</label>
+                                </span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- ★ 商品説明 ★ --}}
+            <div class="detail__form-description-section">
+                <label for="description">商品説明</label>
+                <textarea name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+            </div>
+
+            {{-- ★ アクションボタン（登録）★ --}}
+            <div class="detail__actions">
+                <div class="detail__actions-back">
+                    <button type="button" class="action-button back-button" onclick="history.back()">戻る</button>
+                </div>
+                <div class="detail__actions-save">
+                    <button type="submit" class="action-button save-button">登録</button>
+                    {{-- ★ 削除ボタンは不要のため削除 ★ --}}
+                </div>
+            </div>
+        </div>
+    </form>
+@endsection
+
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageFileInput = document.getElementById('image_file');
+            const fileNameDisplay = document.getElementById('file-name');
+            const imagePreview = document.getElementById('image-preview');
+
+            // ファイルが選択されたら、ファイル名とプレビューを更新する
+            imageFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+
+                if (file) {
+                    // ファイル名を表示
+                    fileNameDisplay.textContent = file.name;
+
+                    // 画像プレビューを表示
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // ファイルがキャンセルされた場合はリセット
+                    fileNameDisplay.textContent = '選択されていません';
+                    imagePreview.src = '{{ asset('images/no-image.png') }}'; // デフォルト画像に戻す
+                }
+            });
+        });
+    </script>
+@endsection

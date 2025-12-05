@@ -24,10 +24,11 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        $isStore = $this->routeIs('products.store');
         return [
             'name' => 'required',
             'price' => 'required|integer|min:0|max:10000',
-            'image_file' => 'required|mimes:png,jpeg',
+            'image_file' => ($isStore ? 'required' : 'nullable') . '|mimes:png,jpeg',
             'seasons' => 'required',
             'description' => 'required|max:120',
         ];

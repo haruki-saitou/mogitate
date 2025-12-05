@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Season;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+
 class Product extends Model
 {
     use HasFactory;
@@ -22,4 +23,12 @@ class Product extends Model
     {
         return $this->belongsToMany(Season::class, 'product_season');
     }
+
+    public function scopeKeywordSearch($query, $keyword){
+        if(!empty($keyword)) {
+            $query->where('name', 'like', "%{$keyword}%");
+            return $query;
+        }
+    }
+
 }

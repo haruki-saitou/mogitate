@@ -1,0 +1,308 @@
+.detail-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.detail__link {
+    color: #4a4a4a;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.detail-header span {
+    color: #000000;
+    font-weight: bold;
+}
+
+.detail-content {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.detail__image-section {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 400px;
+}
+.detail__image {
+    width: 450px;
+    height: 400px;
+    margin: 0;
+}
+.detail__image img {
+    width: 450px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.custom-file-label {
+    background-color: #dcdcdc;
+    border: 2px solid #b8b8b8;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    padding: 8px 15px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.custom-file-label:hover {
+    background-color: #bebdbd;
+}
+
+.custom-file-label:active {
+    box-shadow: none;
+}
+
+.file-name-display {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #616161;
+}
+
+.detail__form {
+    width: 400px;
+    margin-left: 30px;
+    padding: 0;
+    box-sizing: border-box;
+}
+.detail__form-label label,
+.detail__form-price label {
+    display: block;
+    font-size: 18px;
+    color: #5a5959;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.detail__form-label input,
+.detail__form-price input {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 0;
+}
+
+.detail__form-price {
+    margin: 40px 0;
+}
+
+/* Chrome, Safari, Edge, Opera のスピナーボタンを非表示 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Webkit系のデフォルトの見た目を無効化 */
+    margin: 0; /* マージンも削除 (Safariでズレを防ぐため) */
+    appearance: none; /* Firefox のスピナーボタンを非表示 */
+}
+
+/* Firefox のスピナーボタンを非表示 */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefoxのデフォルトをテキストフィールドとして扱う */
+}
+.detail__form-season {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #5a5959;
+}
+
+/* 1. 元のチェックボックスを非表示にする (前回の内容から変更なし) */
+.checkbox-group input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: inline-block;
+}
+
+/* 2. ラベルのスタイル (チェック部分の入れ物) (前回の内容から変更なし) */
+.checkbox-group label {
+    position: relative;
+    padding-left: 30px; /* カスタム〇の分のスペースを左側に空ける */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+}
+
+.checkbox-group .checkbox-item {
+    margin-right: 40px; /* ★調整したい間隔のサイズ (例: 20px) */
+    display: inline-block; /* マージンを適用させるために必要 */
+    margin-top: 20px;
+}
+
+/* 最後のアイテムの右側マージンは不要なため削除する (見た目を整えるため) */
+.checkbox-group .checkbox-item:last-child {
+    margin-right: 0;
+}
+
+/* 3. カスタムの〇（未チェック状態）を作成 */
+.checkbox-group label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* 〇のサイズとスタイル */
+    width: 25px; /* サイズを微調整 */
+    height: 25px;
+    border: 2px solid #ccc; /* 枠線の色 (未チェック時) */
+    border-radius: 50%; /* 完全な〇にする */
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s; /* ホバーやチェック時の変化を滑らかにする */
+}
+
+/* 4. チェックが入った時: 〇の色を変える */
+.checkbox-group input[type="checkbox"]:checked + label::before {
+    /* 外枠と背景を、保存ボタンのような黄色系の色で塗りつぶす */
+    border-color: #666666;
+    background-color: #666666;
+}
+
+/* 5. チェックが入った時: ✓ (チェックマーク) を描画 */
+.checkbox-group input[type="checkbox"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 10px; /* 〇の中心に合わせて調整 */
+    top: 4px; /* 縦位置を調整して✓マークが綺麗に見えるようにする */
+    width: 5px; /* ✓の幅 */
+    height: 10px; /* ✓の高さ */
+    border: solid #fff; /* ✓の色は白 */
+    border-width: 0 2px 2px 0; /* 右と下の線のみを表示して✓の形を作る */
+    transform: rotate(45deg); /* 45度回転させて✓マークにする */
+}
+
+.detail__form-description-section {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.detail__form-description-section label {
+    display: block;
+    font-size: 18px;
+    color: #5a5959;
+    margin-bottom: 15px;
+}
+
+.detail__form-description-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #5a5959;
+    height: 150px;
+    resize: vertical;
+}
+
+.detail__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.detail__actions-delete .delete-button{
+    position: absolute;
+    right: 40px;
+    top: calc(100% - 40px);
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+    background-color: #dcdcdc;
+    width: 200px;
+    color: #5f5f5f;
+}
+
+.back-button:hover {
+    background-color: #bebdbd;
+    opacity: 0.8;
+}
+
+.back-button:active {
+    box-shadow: none;
+}
+
+.save-button {
+    background-color: #ffd700;
+    width: 200px;
+    color: #5e5e5e;
+    font-weight: bold;
+}
+
+.save-button:hover {
+    background-color: #f0ca35;
+}
+
+.save-button:active {
+    box-shadow: none;
+}
+
+.delete-button {
+    background: none;
+    color: #ff0000;
+    font-size: 32px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 ;
+    line-height: 1;
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.delete-button:hover {
+    color: #ff3333;
+}
+
+.detail__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    margin-top: 0px;
+}
