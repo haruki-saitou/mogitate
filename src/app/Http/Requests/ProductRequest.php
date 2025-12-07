@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -25,15 +26,31 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         $isStore = $this->routeIs('products.store');
-        return [
+        $isImageCleared = $this->input('image_is_cleared') == 1;
+
+        $rules = [
             'name' => 'required',
             'price' => 'required|integer|min:0|max:10000',
-            'image_file' => ($isStore ? 'required' : 'nullable') . '|mimes:png,jpeg',
             'seasons' => 'required',
             'description' => 'required|max:120',
+            'image_is_cleared' => ['nullable', 'in:0,1']
         ];
 
+        $imageRules = [
+        'nullable',
+        'mimes:png,jpeg',
+        ];
+
+        $rules['image_file'] = $imageRules;
+
+        if ($isStore|| $isImageCleared) {
+            $rules['image_file'][] = 'required';
+        }
+
+        return $rules;
     }
+
+
     public function messages() {
         return  [
             'name.required' => '商品名を入力してください',

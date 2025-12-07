@@ -1,0 +1,306 @@
+.register {
+    width: 700px;
+    margin: 0px auto;
+    padding: 0px;
+    background-color: #f7f7f7;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    padding: 10px 0px;
+}
+
+.register__form {
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.register__form-group {
+    margin: 10px 0 5px 0;
+}
+
+.register__form input[type="number"]::-webkit-outer-spin-button,
+.register__form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.required-mark {
+    background-color: #e00000;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    padding: 0px 5px;
+    margin: 0px 5px 5px 5px;
+}
+
+.optional-mark {
+    color: #e00000;
+    font-size: 12px;
+}
+
+.error-message {
+    color: #e00000;
+    margin-top: 0px;
+    display: block;
+    padding: 5px 0px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.register__form-input {
+    width: 100%;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #5a5959;
+}
+
+/* --- .register__form-input input と textarea の共通スタイルの統合（入力欄の基本） --- */
+.register__form-input input,
+.register__form-description__textarea textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #5a5959;
+}
+
+.register__form-input input {
+    height: 50px;
+}
+
+.register__form-description__textarea textarea {
+    resize: none;
+    margin-bottom: 0px;
+    height: auto;
+}
+/* ---------------------------------------------------------------------- */
+
+/* --- focus スタイルの重複統合 --- */
+.register__form input:focus,
+.register__form textarea:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #fff;
+    border: 2px solid #aeaeae;
+    padding: 8px; /* 基本の padding:9px から変更 */
+}
+/* ---------------------------------------------------------------------- */
+
+.image-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image-preview-area {
+    width: 400px;
+    height: 350px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 0;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-preview-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.file-select-ui {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    height: 28px;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+/* --- label と legend の共通スタイルの統合 --- */
+.register__form-label label,
+.register__form-image,
+.season-group legend {
+    display: block;
+    font-size: 18px;
+    color: #5a5959;
+}
+.register__form-label label,
+.register__form-image {
+    border-radius: 4px;
+    margin: 30px 0 10px 0;
+}
+.season-group legend {
+    padding: 0;
+    margin: 20px 0 10px 0;
+}
+/* ---------------------------------------------------------------------- */
+
+.checkbox-group input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: inline-block;
+}
+
+.checkbox-group label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+}
+
+.checkbox-group .checkbox-item {
+    margin-right: 40px;
+    color: #5a5959;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.checkbox-group .checkbox-item:last-child {
+    margin-right: 0;
+}
+
+.checkbox-group label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label::before {
+    border-color: #666666;
+    background-color: #666666;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.season-group {
+    border: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.register__form-description__textarea {
+    margin-bottom: -5px;
+}
+
+.file-name-display {
+    font-size: 12px;
+    color: #888;
+    padding: 0;
+    line-height: 1.5;
+    flex-grow: unset;
+    border: none;
+    margin: 7px 0px 10px 10px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* --- .custom-file-select-button と .small-button の共通スタイルの統合 --- */
+.custom-file-select-button,
+.small-button {
+    background-color: #dcdcdc;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+.custom-file-select-button:hover {
+    background-color: #b4babe;
+}
+/* ---------------------------------------------------------------------- */
+
+/* --- active の重複統合 --- */
+.custom-file-select-button:active,
+.save-button:active,
+.back-button:active {
+    box-shadow: none;
+}
+/* ---------------------------------------------------------------------- */
+
+.register__actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.save-button {
+    background-color: #ffd700;
+    width: 200px;
+    color: #5e5e5e;
+    font-weight: bold;
+}
+
+.save-button:hover {
+    background-color: #e9ca00;
+    color: #5e5e5e;
+}
+
+.back-button {
+    background-color: #dcdcdc;
+    width: 200px;
+    color: #5f5f5f;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #bebdbd;
+    color: #5f5f5f;
+}

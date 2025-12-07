@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    @section('css')
+    <link rel="stylesheet" href="{{ asset('css/index.css') . '?v=' . filemtime(public_path('css/index.css')) }}" />
 @endsection
 
 @section('content')
     @if (session('success'))
-        <div class="products__alert--success">
+        <div class="alert alert-success" id="flash-success-message">
             {{ session('success') }}
         </div>
     @endif
     @if ($is_empty ?? false)
-        <div class="products__alert--danger" role="alert">
+        <div class="alert alert-danger" id="flash-error-message">
             「{{ $keyword }}」に一致する商品が見つかりませんでした。
         </div>
     @endif
@@ -127,5 +127,22 @@
 
 
         });
+        function setupFlashMessage(id) {
+            const flashMessage = document.getElementById(id);
+
+            if (flashMessage) {
+                setTimeout(() => {
+                    flashMessage.classList.add('fade-out');
+                }, 3000);
+
+                flashMessage.addEventListener('transitionend', () => {
+                    if (flashMessage.classList.contains('fade-out')) {
+                        flashMessage.classList.add('hidden');
+                    }
+                });
+            }
+        }
+        setupFlashMessage('flash-success-message');
+        setupFlashMessage('flash-error-message');
     </script>
 @endsection

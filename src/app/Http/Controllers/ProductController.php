@@ -17,13 +17,15 @@ class ProductController extends Controller
     }
 
     public function show(Product $product_id) {
-        return view('products.show', compact('product_id'));
+        $allSeasons = Season::orderBy('id')->get();
+        return view('products.show', compact('product_id', 'allSeasons'));
     }
 
     public function create() {
         $seasons = Season::orderBy('name')->get();
         return view('products.create', compact('seasons'));
     }
+
 
     public function store(ProductRequest $request) {
 

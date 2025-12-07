@@ -1,4 +1,3 @@
-/* --- ヘッダー --- */
 h2 {
     font-size: 32px;
     font-weight: bold;
@@ -6,30 +5,42 @@ h2 {
     margin-bottom: 20px;
 }
 
-.products__alert--success {
+/* --- .alert-success と .alert-danger の共通スタイルの統合 --- */
+.alert-success,
+.alert-danger {
     padding: 10px 30px;
     align-items: center;
     height: 50px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
     border-radius: 4px;
     font-size: 18px;
     font-weight: bold;
     margin: 0;
+}
+
+.alert-success {
+    border-color: #badbcc;
+    background-color: #d1e7dd;
     color: #227e53;
 }
 
-.products__alert--danger {
-    padding: 10px 30px;
-    align-items: center;
-    height: 50px;
+.alert-danger {
     border-color: #f5c6cb;
     background-color: #f8d7da;
-    border-radius: 4px;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
     color: #721c24;
+}
+/* ---------------------------------------------------------------------- */
+
+.alert {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.alert.fade-out {
+    opacity: 0;
+}
+
+.alert.hidden {
+    display: none;
 }
 
 .products-header {
@@ -39,33 +50,40 @@ h2 {
     margin-bottom: 0;
 }
 
-.products-header__btn {
-    background-color: #ffb700;
-    text-decoration: none;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+/* --- .products-header__btn と .btn-search の共通スタイルの統合（ボタンの基本） --- */
+.products-header__btn,
+.btn-search {
     color: #333;
     font-weight: bold;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 4px; /* btn-searchは5pxだが、今回は4pxに統合して差異は個別に残す */
     cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* btn-searchはrgba(81, 81, 81, 0.4)だが、今回は共通値に統合 */
+}
+
+.products-header__btn {
+    background-color: #ffb700;
+    text-decoration: none;
 }
 
 .products-header__btn:hover {
     background-color: #e9a701;
 }
 
-.products-header__btn:active {
+/* --- active の重複統合 --- */
+.products-header__btn:active,
+.btn-search:active,
+.product-card:active {
     box-shadow: none;
 }
+/* ---------------------------------------------------------------------- */
 
-/* --- メインレイアウト --- */
 .products-layout {
     display: flex;
-    gap: 25px; /* メインコンテンツとサイドバーの間の隙間 */
+    gap: 25px;
 }
 
-/* --- サイドバー --- */
 .products-filter {
     width: 250px;
     display: flex;
@@ -80,46 +98,39 @@ h2 {
     color: #333;
 }
 
-/* --- フィルター部品の共通スタイル --- */
+/* --- products-filter input/select/btn-search の共通スタイルの統合 --- */
 .products-filter input[type="text"],
 .products-filter select,
 .btn-search {
     width: 100%;
-    padding: 20px 10px; /* 高さ（padding）の指定 */
     box-sizing: border-box;
-    border: 1px solid #929292;
     margin: 0;
 }
 
-/* --- 検索インプット --- */
+.products-filter input[type="text"],
+.products-filter select {
+    padding: 20px 10px;
+    border: 1px solid #929292;
+}
+/* ---------------------------------------------------------------------- */
+
 .products-filter input[type="text"] {
     border-radius: 50px;
-    color: #929292; /* インプットのテキスト色 */
+    color: #929292;
 }
 
-/* --- 検索ボタン --- */
 .btn-search {
     background-color: #ffcc00;
-    padding: 10px 20px; /* Input と高さを合わせるため、padding を調整 */
-    font-size: 1em; /* 1.2em から標準サイズに戻すか、他の部品と合わせる */
-    color: #333;
-    font-weight: bold;
-    border: none;
+    font-size: 1em;
     margin: 20px 0 40px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(81, 81, 81, 0.4);
+    border-radius: 5px; /* products-header__btn の 4px とは異なるため残す */
+    box-shadow: 1px 1px 3px rgba(81, 81, 81, 0.4); /* products-header__btn の値とは異なるため残す */
 }
 
 .btn-search:hover {
     background-color: #f0c001;
 }
 
-.btn-search:active {
-    box-shadow: none;
-}
-
-/* --- セレクトボックス --- */
 .select-wrapper {
     position: relative;
     width: 100%;
@@ -133,9 +144,6 @@ h2 {
     appearance: none;
     padding-right: 30px;
     cursor: pointer;
-}
-
-.products-filter select {
     color: #c9c9c9;
 }
 
@@ -192,7 +200,6 @@ h2 {
     color: #fff;
 }
 
-/* 矢印アイコン */
 .select-wrapper::after {
     content: "▼";
     font-size: 12px;
@@ -204,7 +211,6 @@ h2 {
     pointer-events: none;
 }
 
-/* --- 商品一覧 --- */
 .products-list {
     flex: 1;
     display: grid;
@@ -213,7 +219,6 @@ h2 {
     margin-bottom: 40px;
 }
 
-/* --- 商品カード --- */
 .product-card {
     background-color: #fff;
     border-radius: 8px;
@@ -228,10 +233,6 @@ h2 {
 
 .product-card:hover {
     box-shadow: 1px 1px 1px 2px rgba(43, 43, 43, 0.3);
-}
-
-.product-card:active {
-    box-shadow: none;
 }
 
 .product-image {
@@ -254,21 +255,23 @@ h2 {
     text-decoration: none;
     color: inherit;
     transition: 0.2s;
-
 }
 
-/* --- ページネーション --- */
 .products-pagination {
     margin-top: 0;
 }
-.pagination-wrapper {
-    margin-top: 20px;
-}
-.pagination-wrapper .pagination,
+
+/* --- .pagination-wrapper .pagination と .pagination の統合 --- */
+.pagination-wrapper,
 .pagination {
     display: flex;
     justify-content: center;
 }
+
+.pagination-wrapper {
+    margin-top: 20px;
+}
+/* ---------------------------------------------------------------------- */
 
 .pagination__items {
     display: flex;
@@ -278,6 +281,7 @@ h2 {
     margin: 0;
 }
 
+/* --- .pagination__item の共通スタイルの統合 --- */
 .pagination__item {
     display: inline-block;
     background-color: #ffffff;
@@ -300,31 +304,10 @@ h2 {
     border-color: #f1c100;
     font-weight: bold;
 }
+/* ---------------------------------------------------------------------- */
 
 .pagination__disabled {
     border-color: #aaa;
     color: #aaa;
     pointer-events: none;
-}
-
-/* --- レスポンシブ --- */
-
-@media (max-width: 900px) {
-    .products-layout {
-        flex-direction: column;
-    }
-
-    .products-filter {
-        width: 100%;
-    }
-
-    .products-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .products-list {
-        grid-template-columns: 1fr;
-    }
 }

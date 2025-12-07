@@ -1,5 +1,5 @@
 body {
-    background-color: #ececea;
+    background-color: #f7f7f7;
     overflow-x: hidden;
 }
 
@@ -28,4 +28,24 @@ body {
     transform: none;
     color: #ffdf0e;
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    .products-layout {
+        flex-direction: column;
+    }
+
+    .products-filter {
+        width: 100%;
+    }
+
+    .products-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .products-list {
+        grid-template-columns: 1fr;
+    }
 }
