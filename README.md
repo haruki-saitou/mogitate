@@ -1,16 +1,49 @@
 # mogitate  
 ## 環境構築  
 ### Dockerビルド  
-・git clone git@github.com:haruki-saitou/mogitate.git  
-・docker compose up -d --build  
+```bash
+git clone git@github.com:haruki-saitou/mogitate.git  
+```  
+・DockerDesktopを立ち上げる  
+```bash
+docker compose up -d --build  
+```  
 ### laravel環境構築  
-・docker compose exec php bash  
-・composer install  
-・cp .env.example .env 、環境変数を適宣変更  
-・php artisan key:generate  
-・php artisan migrate  
-・php artisan storage:link  
-・php artisan db:seed  
+```bash
+docker compose exec php bash  
+```  
+```bash
+composer install  
+```  
+・環境変数を適宣変更  
+```bash
+cp .env.example .env  
+```  
+.env を以下の内容に変更  
+```bash
+DB_CONNECTION=mysql  
+DB_HOST=mysql  
+DB_PORT=3306  
+DB_DATABASE=laravel_db  
+DB_USERNAME=laravel_user  
+DB_PASSWORD=laravel_pass  
+```
+・アプリケーションキーの作成  
+```bash
+php artisan key:generate  
+```  
+・マイグレーションの実行  
+```bash
+php artisan migrate  
+```  
+・ストレージリンク作成  
+```bash
+php artisan storage:link  
+```  
+・シーディングの実行  
+```bash
+php artisan db:seed  
+```  
 ## 開発環境  
 ・商品一覧画面: http://localhost/products  
 ・商品詳細画面: http://localhost/products/detail/{product_id}  
