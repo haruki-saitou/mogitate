@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     @yield('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
 </head>
 <header class="header">
     <div class="header__inner">
-        <h1 class="header__title">mogitate</h1>
+        <h1 class="header__title"><a href="{{ route('products.index') }}" class="header__title__logo">mogitate</a></h1>
     </div>
 </header>
 

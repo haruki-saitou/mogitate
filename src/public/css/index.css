@@ -300,3 +300,49 @@ h2 {
     color: #aaa;
     pointer-events: none;
 }
+
+
+@media (max-width: 900px) {
+    .products-filter {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .products-header h2 {
+        margin-bottom: 0;
+    }
+
+    .products-header__btn,
+    .btn-search {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .product-card__info {
+        font-size: 18px;
+        padding: 0 10px;
+    }
+
+    .pagination__item {
+        font-size: 14px;
+        padding: 4px 10px;
+        min-width: 30px;
+        margin: 0 3px;
+    }
+
+    .products-header__btn,
+    .btn-search {
+        padding: 8px 15px;
+    }
+}

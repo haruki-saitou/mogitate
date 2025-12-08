@@ -8,6 +8,22 @@ body {
     width: 100%;
 }
 
+.header__title__logo {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.2s;
+    font-family: "Courgette", cursive;
+    font-weight: bold;
+    font-style: normal;
+    font-size:48px;
+}
+
+.header__title__logo:hover {
+    text-decoration: none;
+    color: #ffc800;
+    transition: 0.2s;
+}
+
 .header__inner {
     max-width: 100vw;
     margin: 0 40px;
@@ -34,18 +50,22 @@ body {
     .products-layout {
         flex-direction: column;
     }
-
     .products-filter {
         width: 100%;
     }
-
     .products-list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 768px) {
+    .products-layout .products-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 500px) {
-    .products-list {
+    .products-layout .products-list {
         grid-template-columns: 1fr;
     }
 }
