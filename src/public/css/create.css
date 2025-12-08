@@ -65,7 +65,6 @@ h2 {
     color: #5a5959;
 }
 
-/* --- .register__form-input input と textarea の共通スタイルの統合（入力欄の基本） --- */
 .register__form-input input,
 .register__form-description__textarea textarea {
     width: 100%;
@@ -86,18 +85,15 @@ h2 {
     margin-bottom: 0px;
     height: auto;
 }
-/* ---------------------------------------------------------------------- */
 
-/* --- focus スタイルの重複統合 --- */
 .register__form input:focus,
 .register__form textarea:focus {
     outline: none;
     box-shadow: none;
     background-color: #fff;
     border: 2px solid #aeaeae;
-    padding: 8px; /* 基本の padding:9px から変更 */
+    padding: 8px;
 }
-/* ---------------------------------------------------------------------- */
 
 .image-upload-wrapper {
     display: flex;
@@ -135,7 +131,6 @@ h2 {
     display: none;
 }
 
-/* --- label と legend の共通スタイルの統合 --- */
 .register__form-label label,
 .register__form-image,
 .season-group legend {
@@ -152,7 +147,6 @@ h2 {
     padding: 0;
     margin: 20px 0 10px 0;
 }
-/* ---------------------------------------------------------------------- */
 
 .checkbox-group input[type="checkbox"] {
     opacity: 0;
@@ -236,7 +230,6 @@ h2 {
     max-width: 100%;
 }
 
-/* --- .custom-file-select-button と .small-button の共通スタイルの統合 --- */
 .custom-file-select-button,
 .small-button {
     background-color: #dcdcdc;
@@ -253,15 +246,12 @@ h2 {
 .custom-file-select-button:hover {
     background-color: #b4babe;
 }
-/* ---------------------------------------------------------------------- */
 
-/* --- active の重複統合 --- */
 .custom-file-select-button:active,
 .save-button:active,
 .back-button:active {
     box-shadow: none;
 }
-/* ---------------------------------------------------------------------- */
 
 .register__actions {
     display: flex;

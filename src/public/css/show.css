@@ -61,7 +61,6 @@
     display: none;
 }
 
-/* --- .custom-file-label および .action-button.clear-image-button の重複統合 --- */
 .custom-file-label,
 .action-button.clear-image-button {
     border-radius: 2px;
@@ -88,7 +87,6 @@
     padding: 5px 10px;
     background-color: #dcdada;
 }
-/* ---------------------------------------------------------------------- */
 
 .file-upload-container {
     display: flex;
@@ -96,7 +94,6 @@
     margin-top: 10px;
 }
 
-/* --- hover/active の重複統合 --- */
 .custom-file-label:hover,
 .clear-image-button:hover,
 .back-button:hover {
@@ -109,7 +106,6 @@
 .save-button:active {
     box-shadow: none;
 }
-/* ---------------------------------------------------------------------- */
 
 .file-name-display {
     margin-left: 10px;
@@ -124,7 +120,6 @@
     box-sizing: border-box;
 }
 
-/* --- label の重複統合 --- */
 .detail__form-label label,
 .detail__form-price label,
 .detail__form-description-section label {
@@ -137,9 +132,7 @@
     margin: 0;
     padding: 10px 0;
 }
-/* ---------------------------------------------------------------------- */
 
-/* --- input/textarea の重複統合（基本スタイル） --- */
 .detail__form-label input,
 .detail__form-price input,
 .detail__form-description-section textarea {
@@ -148,7 +141,7 @@
     border: 1px solid #bdbdbd;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 16px; /* textarea の 18px は個別に残します */
+    font-size: 16px;
     margin: 0;
 }
 .detail__form-description-section textarea {
@@ -163,7 +156,6 @@
     display: block;
     height: 50px;
 }
-/* ---------------------------------------------------------------------- */
 
 .detail__form-price {
     margin: 40px 0 0 0;
@@ -248,7 +240,6 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-bottom: 15px;
 }
 
-/* --- focus スタイルの重複統合 --- */
 .detail__form-label input:focus,
 .detail__form-price input:focus,
 .detail__form-description-section textarea:focus {
@@ -256,9 +247,8 @@ input[type="number"]::-webkit-inner-spin-button {
     box-shadow: none;
     background-color: #fff;
     border: 2px solid #aeaeae;
-    padding: 8px; /* input/textarea の padding:10px と競合するが、focus時を優先 */
+    padding: 8px;
 }
-/* ---------------------------------------------------------------------- */
 
 .detail__actions {
     display: flex;
@@ -269,7 +259,6 @@ input[type="number"]::-webkit-inner-spin-button {
     position: relative;
 }
 
-/* --- .action-button の基本スタイルを統合 --- */
 .action-button {
     padding: 10px 20px;
     margin: 0 10px;
@@ -299,7 +288,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .back-button:hover {
-    color: #5f5f5f; /* background-color: #bebdbd; は上で統合済み */
+    color: #5f5f5f;
 }
 
 .save-button {
