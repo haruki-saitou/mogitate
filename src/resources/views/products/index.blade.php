@@ -39,8 +39,8 @@
                 <div class="select-wrapper">
                     <select id="sort" name="select__sort--ui">
                         <option value="" disabled selected hidden>価格で並べ替え</option>
-                        <option value="price_asc" {{ ($sort ?? '') === 'price_asc' ? 'selected' : '' }}>価格が安い順</option>
-                        <option value="price_desc" {{ ($sort ?? '') === 'price_desc' ? 'selected' : '' }}>価格が高い順</option>
+                        <option value="price_asc" {{ ($sort ?? '') === 'price_asc' ? 'selected' : '' }}>低い順に表示</option>
+                        <option value="price_desc" {{ ($sort ?? '') === 'price_desc' ? 'selected' : '' }}>高い順に表示</option>
                     </select>
                 </div>
                 <div id="sort-tag-wrapper">

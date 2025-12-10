@@ -13,14 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
-</head>
-<header class="header">
-    <div class="header__inner">
-        <h1 class="header__title"><a href="{{ route('products.index') }}" class="header__title__logo">mogitate</a></h1>
-    </div>
-</header>
-
 <body>
+    </head>
+    <header class="header">
+        <div class="header__inner">
+            <h1 class="header__title"><a href="{{ route('products.index') }}" class="header__title__logo">mogitate</a>
+            </h1>
+        </div>
+    </header>
     <main>
         <div class="content-wrapper">
             @yield('content')

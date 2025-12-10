@@ -33,10 +33,15 @@ class ProductController extends Controller
 
         $file_name = $request->file('image_file')->getClientOriginalName();
 
+        if ($request->hasFile('image_file')) {
+            $path = $request->file('image_file')->store('', 'public');
+            $file_to_save = basename($path); } else { $file_to_save = null;
+        }
+
         $product = Product::create([
+            'image' => $file_to_save,
             'name' => $validatedData['name'],
             'price' => $validatedData['price'],
-            'image' => $file_name,
             'description' => $validatedData['description'],
         ]);
 
@@ -54,12 +59,13 @@ class ProductController extends Controller
         $updateData = $validatedData;
 
         if ($request->hasFile('image_file')) {
-            $path = $request->file('image_file')->store('products','public');
+            $path = $request->file('image_file')->store('','public');
             $updateData['image'] = basename($path);
 
             if ($product->image) {
                 Storage::disk('public')->delete($product->image);
             }
+
         } else {
             unset($updateData['image_file']);
         }
