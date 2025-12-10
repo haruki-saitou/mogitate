@@ -23,7 +23,7 @@ composer install
 ```bash
 cp .env.example .env  
 ```  
-.env を以下の内容に変更  
+.envの以下の場所の内容を、以下の内容に変更  
 ```bash
 DB_CONNECTION=mysql  
 DB_HOST=mysql  
