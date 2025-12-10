@@ -32,7 +32,7 @@
                     </div>
                     <div class="register__form-input">
                         <input type="number" name="price" id="price" value="{{ old('price') }}"
-                            placeholder="価格を入力" />
+                            placeholder="価格を入力" formnovalidate />
                     </div>
                 </div>
                 @error('price')

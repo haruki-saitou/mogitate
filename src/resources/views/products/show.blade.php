@@ -65,7 +65,7 @@
                     <div class="detail__form-price">
                         <label for="price">価格</label>
                         <input type="number" name="price" id="price"
-                            value="{{ old('price', $product_id->price) }}" />
+                            value="{{ old('price', $product_id->price) }}" formnovalidate />
                     </div>
                     @error('price')
                         <div class="error-message">
