@@ -59,5 +59,34 @@ php artisan db:seed
 ・nginx 1.21.1  
 ・MySQL 8.0.44  
 ・jquery 3.7.1  
+## テーブル設計  
+seasonsテーブル  
+カラム名  
+型  
+PRIMARY KEY UNIQUE KEY NOT NULL  
+FOREIGN KEY  
+id  
+bigint unsigned ○  
+name  
+varchar(255) ○  
+created at  
+timestamp  
+updated_at  
+timestamp  
+product_seasonテーブル  
+カラム名  
+型  
+PRIMARY KEY UNIQUE KEY NOT NULL  
+FOREIGN KEY  
+id  
+bigint unsigned ○  
+product_id  
+bigint unsigned ○ products(id)  
+season id  
+bigint unsigned ○ seasons(id)  
+created at  
+timestamp  
+updated_at  
+timestamp  
 ## ER図
 ![ER図](assets/er_diagram.png)
