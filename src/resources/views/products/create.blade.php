@@ -90,7 +90,7 @@
                 @enderror
             </div>
             <div class="register__actions">
-                <button type="button" class="action-button back-button" onclick="history.back()">戻る</button>
+                <button type="button" class="action-button back-button" onclick="location.href = '{{ route('products.index') }}'">戻る</button>
                 <button type="submit" class="action-button save-button">登録</button>
             </div>
         </div>
