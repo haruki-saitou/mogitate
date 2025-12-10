@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" >
         @csrf
         <div class="register">
             <h2>商品登録</h2>
@@ -31,8 +31,8 @@
                         <label for="price">値段<span class="required-mark">必須</span></label>
                     </div>
                     <div class="register__form-input">
-                        <input type="number" name="price" id="price" value="{{ old('price') }}"
-                            placeholder="価格を入力" formnovalidate />
+                        <input type="text" name="price" id="price" value="{{ old('price') }}"
+                            placeholder="価格を入力" inputmode="numeric"/>
                     </div>
                 </div>
                 @error('price')

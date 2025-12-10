@@ -8,7 +8,7 @@
 @section('content')
     <div class="detail-container">
         <form action="{{ route('products.update', ['product_id' => $product_id->id]) }}" method="POST"
-            enctype="multipart/form-data">
+            enctype="multipart/form-data" >
             @csrf
             @method('PUT')
             <div class="detail-header">
@@ -64,8 +64,8 @@
                     @enderror
                     <div class="detail__form-price">
                         <label for="price">価格</label>
-                        <input type="number" name="price" id="price"
-                            value="{{ old('price', $product_id->price) }}" formnovalidate />
+                        <input type="text" name="price" id="price"
+                            value="{{ old('price', $product_id->price) }}" inputmode="numeric" />
                     </div>
                     @error('price')
                         <div class="error-message">
