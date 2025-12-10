@@ -9,6 +9,16 @@ git clone git@github.com:haruki-saitou/mogitate.git
 ・ターミナルに下記を貼り付け実行  
 ```bash
 docker compose up -d --build  
+```
+MacのM1・M2チップのPCの場合、  
+no matching manifest for linux/arm64/v8 in the manifest list entries  
+のメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、  
+docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください  
+```bash
+mysql:
+    platform: linux/x86_64(この文追加)
+    image: mysql:8.0.26
+    environment:
 ```  
 ### laravel環境構築  
 ・PHPコンテナ内に入る  
@@ -40,7 +50,7 @@ php artisan key:generate
 ```bash
 php artisan migrate  
 ```  
-・ストレージリンク作成  
+・シンボリックリンク作成  
 ```bash
 php artisan storage:link  
 ```  
@@ -60,33 +70,6 @@ php artisan db:seed
 ・MySQL 8.0.44  
 ・jquery 3.7.1  
 ## テーブル設計  
-seasonsテーブル  
-カラム名  
-型  
-PRIMARY KEY UNIQUE KEY NOT NULL  
-FOREIGN KEY  
-id  
-bigint unsigned ○  
-name  
-varchar(255) ○  
-created at  
-timestamp  
-updated_at  
-timestamp  
-product_seasonテーブル  
-カラム名  
-型  
-PRIMARY KEY UNIQUE KEY NOT NULL  
-FOREIGN KEY  
-id  
-bigint unsigned ○  
-product_id  
-bigint unsigned ○ products(id)  
-season id  
-bigint unsigned ○ seasons(id)  
-created at  
-timestamp  
-updated_at  
-timestamp  
+![table図](assets/mogitate_tables.png)
 ## ER図
 ![ER図](assets/er_diagram.png)
