@@ -19,7 +19,7 @@ docker compose exec php bash
 ```bash
 composer install  
 ```  
-・.env.exampleファイルをコピー 
+・.env.exampleファイルを.envとしてコピー 
 ```bash
 cp .env.example .env  
 ```  
