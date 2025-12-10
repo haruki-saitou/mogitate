@@ -1,21 +1,25 @@
 # mogitate  
 ## 環境構築  
 ### Dockerビルド  
+・ターミナルを立ち上げ、下記を貼り付け実行  
 ```bash
 git clone git@github.com:haruki-saitou/mogitate.git  
 ```  
-・DockerDesktopを立ち上げる  
+・DockerDesktopアプリを立ち上げる  
+・ターミナルに下記を貼り付け実行  
 ```bash
 docker compose up -d --build  
 ```  
 ### laravel環境構築  
+・PHPコンテナ内に入る  
 ```bash
 docker compose exec php bash  
-```  
+```
+・composerインストール  
 ```bash
 composer install  
 ```  
-・環境変数を適宣変更  
+・.envファイルをコピー 
 ```bash
 cp .env.example .env  
 ```  
